@@ -14,5 +14,20 @@ window.onload() = function() {
             });
         })(i);
     }
-
+    mainForm.addEventListener("submit", function(event) {
+        var required = document.getElementsByClassName("required");
+        for (var i = 0; i < required.length; i++) {
+            (function(i) {
+                var element = required[i];
+                if (element.value == "") {
+                    element.classList.add("error")
+                } else {
+                    element.classList.remove("error");
+                }
+            })(i);
+        }
+        if (document.getElementsByClassName("error").length > 0) {
+            event.preventDefault();
+        }
+    });
 }
